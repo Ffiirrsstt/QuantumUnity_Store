@@ -1,0 +1,17 @@
+.box-contactmain {
+  height: 300px;
+  min-height: max-content;
+  width: 50vw;
+}
+
+.a-start {
+  align-items: start;
+}
+
+.p20px {
+  padding: 20px;
+}
+
+.mb10px {
+  margin-bottom: 10px;
+}

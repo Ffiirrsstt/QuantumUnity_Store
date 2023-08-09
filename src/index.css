@@ -1,0 +1,262 @@
+@import url("https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,500;1,100&display=swap");
+
+:root {
+  --txt: white;
+  --rgba: rgba(0, 0, 0, 0.3);
+  --shadow: 0px 5px 5px var(--rgba);
+  --bg: #292929;
+  --two: white;
+  --bg-three: #c0c5ce;
+  --bg-two: #4f5b66;
+  --bg-btn: orange;
+  --tr: 0.2s all ease-in;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: "Sarabun", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.over {
+  overflow: hidden;
+}
+
+.bor10 {
+  border-radius: 50px;
+}
+
+.bor-bottom10 {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.bor-top10 {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.relative {
+  position: relative;
+}
+
+.box {
+  width: 100%;
+  height: 15vh;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+button,
+input {
+  outline: none;
+  cursor: pointer;
+}
+
+.index1 {
+  z-index: 1;
+}
+
+.txt-color {
+  color: var(--txt);
+}
+
+.txt-shadow {
+  text-shadow: var(--shadow);
+}
+
+.box-shadow {
+  box-shadow: var(--shadow);
+}
+
+.bg {
+  background: var(--bg);
+}
+
+.bg-w {
+  background: var(--txt);
+}
+
+.bg-two {
+  background: var(--bg-two);
+}
+.bg-three {
+  background: var(--bg-three);
+}
+.bg-btn {
+  background: var(--bg-btn);
+}
+
+.color-btn {
+  color: var(--bg-btn);
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.txt-black {
+  color: var(--bg);
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-template {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
+
+.fil-12 {
+  transition: var(--tr);
+}
+.fil-12:hover {
+  filter: brightness(1.2);
+  transition: var(--tr);
+}
+
+.scale-p {
+  transition: var(--tr);
+}
+.scale-p:hover {
+  scale: 1.03;
+  transition: var(--tr);
+}
+
+.a-end {
+  align-items: end;
+}
+
+.txt-center {
+  text-align: center;
+}
+
+.j-between {
+  justify-content: space-between;
+}
+
+.txt-colorbg {
+  color: var(--bg);
+}
+
+.a-start-self {
+  align-self: start;
+}
+.a-end-self {
+  align-self: end;
+}
+
+.j-start {
+  justify-content: start;
+}
+
+.txt-start {
+  text-align: start;
+}
+
+.j-end {
+  justify-content: end;
+}
+
+.w {
+  width: 100%;
+}
+
+.w80 {
+  width: 80vw;
+}
+
+.h {
+  height: 100%;
+}
+
+.m-h100 {
+  min-height: 100vh;
+}
+
+.pr20px {
+  padding-right: 20px;
+}
+
+.h90 {
+  height: 92vh;
+}
+
+.h20 {
+  height: 10vh;
+  height: 100%;
+}
+
+.h80 {
+  height: 80vh;
+}
+
+.max-h100 {
+  max-height: 100vh;
+}
+
+.max-h92vh {
+  /* max-height: 100vh; */
+}
+
+.over {
+  overflow: hidden;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.font-wn {
+  font-weight: normal;
+}
+
+.font-wb {
+  font-weight: bold;
+}
+
+.h100 {
+  height: 100vh;
+}
+
+.h10 {
+  height: 10vh;
+}
+
+.font-wl {
+  font-weight: lighter;
+}
+
+.flex7 {
+  flex: 7;
+}
+.flex3 {
+  flex: 3;
+}
+.flex1 {
+  flex: 1;
+}
+
+@media (max-height: 600px) {
+  .over {
+    overflow: scroll;
+  }
+}
