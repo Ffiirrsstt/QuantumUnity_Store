@@ -1,5 +1,5 @@
 import { typedatashop } from "./useContext";
-import { styletypedata } from "./Dataflower";
+import { styletypedata } from "./Dataipad";
 
 interface typeaction {
   type: string;
@@ -12,9 +12,9 @@ interface typeaction {
 export const DataReducer = (state: typedatashop, action: typeaction) => {
   switch (action.type) {
     case "UPDATEPAY": {
-      let Dataflower: styletypedata[] = state.Dataflower;
+      let Dataipad: styletypedata[] = state.Dataipad;
       if (typeof action.payload.value === "number") {
-        Dataflower = Dataflower.map((dataitem, index) => {
+        Dataipad = Dataipad.map((dataitem: styletypedata, index: number) => {
           return index === (action.payload.id as number) - 1
             ? { ...dataitem, pay: action.payload.value as number }
             : dataitem;
@@ -22,74 +22,75 @@ export const DataReducer = (state: typedatashop, action: typeaction) => {
       }
       return {
         ...state,
-        Dataflower,
+        Dataipad,
       };
     }
     case "UPDATEAMOUNT": {
-      let Dataflower: styletypedata[] = state.Dataflower;
-      Dataflower = Dataflower.map((dataitem, index) =>
+      let Dataipad: styletypedata[] = state.Dataipad;
+      Dataipad = Dataipad.map((dataitem: styletypedata, index: number) =>
         index === (action.payload.id as number) - 1
           ? { ...dataitem, quantitybuy: action.payload.value.toString() }
           : dataitem
       );
-      return { ...state, Dataflower };
+      return { ...state, Dataipad };
     }
     case "UPDATETOTALPAY":
       return { ...state, totalpay: action.payload.value };
     case "UPDATECART": {
-      let Dataflower: styletypedata[] = state.Dataflower;
-      Dataflower = Dataflower.map((dataitem, index) =>
+      let Dataipad: styletypedata[] = state.Dataipad;
+      Dataipad = Dataipad.map((dataitem: styletypedata, index: number) =>
         index === (action.payload.id as number) - 1
           ? { ...dataitem, cart: action.payload.value as number }
           : dataitem
       );
-      return { ...state, Dataflower };
+      return { ...state, Dataipad };
     }
     case "UPDATENEW": {
-      let Dataflower: styletypedata[] = state.Dataflower;
-      Dataflower = Dataflower.map((dataitem, index) =>
+      let Dataipad: styletypedata[] = state.Dataipad;
+      Dataipad = Dataipad.map((dataitem: styletypedata, index: number) =>
         index === (action.payload.id as number) - 1
           ? // ? { ...dataitem, pay: dataitem.price, quantitybuy: "1" }
             { ...dataitem, quantitybuy: "1" }
           : dataitem
       );
-      return { ...state, Dataflower };
+      return { ...state, Dataipad };
     }
     case "UPDATERED": {
-      let Dataflower: styletypedata[] = state.Dataflower;
-      Dataflower = Dataflower.map((dataitem, index) =>
+      let Dataipad: styletypedata[] = state.Dataipad;
+      Dataipad = Dataipad.map((dataitem: styletypedata, index: number) =>
         index === (action.payload.id as number) - 1
           ? { ...dataitem, forboolean: action.payload.value as boolean }
           : dataitem
       );
-      return { ...state, Dataflower };
+      return { ...state, Dataipad };
     }
 
     case "UPDATETOTALAMOUNT": {
-      const result = state.Dataflower.filter((dataitem) => dataitem.cart === 1);
+      const result = state.Dataipad.filter(
+        (dataitem: styletypedata) => dataitem.cart === 1
+      );
 
       const totalamount = result.reduce(
-        (cur, value) => cur + parseInt(value.quantitybuy),
+        (cur: number, value: styletypedata) =>
+          cur + parseInt(value.quantitybuy),
         0
       );
 
-      const totalpay = result.reduce((cur, value) => cur + value.pay, 0);
-
-      return { ...state, totalamount, totalpay };
+      return { ...state, totalamount };
     }
     case "UPDATESELECT": {
-      let Dataflower: styletypedata[] = state.Dataflower;
-      Dataflower = Dataflower.map((dataitem, index) =>
+      let Dataipad: styletypedata[] = state.Dataipad;
+      Dataipad = Dataipad.map((dataitem: styletypedata, index: number) =>
         index === (action.payload.id as number) - 1
           ? { ...dataitem, selected: action.payload.value as number[] }
           : dataitem
       );
-      return { ...state, Dataflower };
+      return { ...state, Dataipad };
     }
     case "UPDATESELECTCOLOR": {
       const forid = action.payload.id as number[];
-      let Dataflower: styletypedata[] = state.Dataflower;
-      Dataflower = Dataflower.map((dataitem, index) =>
+      let Dataipad: styletypedata[] = state.Dataipad;
+      Dataipad = Dataipad.map((dataitem: styletypedata, index: number) =>
         index === forid[0] - 1
           ? forid[1] == 0
             ? {
@@ -108,7 +109,7 @@ export const DataReducer = (state: typedatashop, action: typeaction) => {
               }
           : dataitem
       );
-      return { ...state, Dataflower };
+      return { ...state, Dataipad };
     }
     default:
       return state;

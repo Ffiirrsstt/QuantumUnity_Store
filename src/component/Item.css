@@ -7,6 +7,10 @@
   top: 8vh;
 }
 
+.w50 {
+  width: 50% !important;
+}
+
 .box-description {
   top: 87vh;
 }

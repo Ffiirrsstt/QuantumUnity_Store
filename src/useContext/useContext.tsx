@@ -5,11 +5,11 @@ import {
   useEffect,
   useReducer,
 } from "react";
-import { Dataflower, styletypedata } from "./Dataflower";
+import { Dataipad, styletypedata } from "./Dataipad";
 import { DataReducer } from "./DataReducer";
 
 export interface typedatashop {
-  Dataflower: styletypedata[];
+  Dataipad: styletypedata[];
   totalamount: number;
   totalpay: number;
 }
@@ -26,7 +26,7 @@ const valuelocaldata = localStorage.getItem("dataShop");
 valuelocaldata !== undefined && valuelocaldata !== null
   ? (dataShop = JSON.parse(valuelocaldata))
   : (dataShop = {
-      Dataflower,
+      Dataipad,
       totalamount: 0,
       totalpay: 0,
     });

@@ -1,7 +1,6 @@
-import { styletypedata } from "../useContext/Dataflower";
+import { styletypedata } from "../useContext/Dataipad";
 import { useData } from "../useContext/useContext";
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import "./Cart.css";
 import Nav from "./Nav";
@@ -11,34 +10,22 @@ import { FiShoppingBag } from "react-icons/fi";
 import { TfiAnnouncement } from "react-icons/tfi";
 
 export default function Cart() {
-  const { Dataflower, tab, totalamount, updatetotalpay } = useData();
-  const [data, setData] = useState<styletypedata[]>();
+  const { Dataipad, tab, totalamount, updatetotalpay } = useData();
   const [totalsum, setTotalsum] = useState<number>();
   const [boolean, setBoolean] = useState<boolean>(false);
 
   useEffect(() => {
-    const result = Dataflower.filter((item: styletypedata) => item.cart === 1);
-    setData(result.filter((item: styletypedata) => item.pay !== 0));
-    setData(result);
-  }, []);
-
-  useEffect(() => {
-    const result = Dataflower.filter((item: styletypedata) => item.cart === 1);
-    setData(result.filter((item: styletypedata) => item.pay !== 0));
-  }, [Dataflower]);
-
-  useEffect(() => {
-    if (data !== undefined) {
-      const total = data.reduce(
-        (cur, value) =>
-          cur + +value.quantitybuy * value.price[value.selected[0]],
-        0
-      );
-      setTotalsum(total);
-      updatetotalpay(total);
-      data.length === 0 ? setBoolean(true) : setBoolean(false);
-    }
-  }, [data]);
+    const total = Dataipad.filter(
+      (dataitem: styletypedata) => dataitem.cart === 1
+    ).reduce((cur: number, value: styletypedata) => {
+      const totalForItem: number =
+        +value.quantitybuy * value.price[value.selected[0]];
+      return cur + totalForItem;
+    }, 0);
+    setTotalsum(total);
+    updatetotalpay(total);
+    Dataipad.length === 0 ? setBoolean(true) : setBoolean(false);
+  }, [Dataipad]);
 
   return (
     <div className="flex flex-col w two m-h100 ">
@@ -80,11 +67,19 @@ export default function Cart() {
           </div>
         )}
         {!boolean &&
+          Dataipad &&
+          // totalsum &&
+          Dataipad.map((dataitem: styletypedata) => {
+            if (dataitem.cart === 1) {
+              return <ItemCart key={dataitem.id} {...dataitem} />;
+            }
+          })}
+        {/* {!boolean &&
           data &&
           totalsum &&
           data.map((dataitem: styletypedata) => {
-            return <ItemCart key={uuidv4()} {...dataitem} />;
-          })}
+            return <ItemCart key={dataitem.id} {...dataitem} />;
+          })} */}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { styletypedata } from "../useContext/Dataflower";
+import { styletypedata } from "../useContext/Dataipad";
 import { useData } from "../useContext/useContext";
 import { useState, useEffect } from "react";
 
@@ -12,6 +12,7 @@ export default function ItemCart(props: styletypedata) {
     updatetotalamount,
     updatevalueItem,
     updateanred,
+    updatePay,
   } = useData();
 
   const {
@@ -37,6 +38,10 @@ export default function ItemCart(props: styletypedata) {
     setPaymentAmoun(result);
   }, [valuenumber]);
 
+  useEffect(() => {
+    updatePay(forpay, id);
+  }, [forpay]);
+
   function funDelete(forid: number) {
     updateCart(0, forid);
     updatetotalamount();
@@ -55,8 +60,8 @@ export default function ItemCart(props: styletypedata) {
       updatevalueItem(inputNumber, forid);
       updateanred(false, forid);
       if (inputNumber === 0) {
-        // updateCart(0, forid);
-        // updatenew(forid);
+        updateCart(0, forid);
+        updatenew(forid);
       }
       updatetotalamount();
     } else {

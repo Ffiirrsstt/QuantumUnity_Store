@@ -1,4 +1,4 @@
-import { styletypedata } from "../useContext/Dataflower";
+import { styletypedata } from "../useContext/Dataipad";
 import { useParams } from "react-router-dom";
 import "./Item.css";
 import { useData } from "../useContext/useContext";
@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 export default function Item() {
   // export default function Item() :JSX.Element{
   const {
-    Dataflower,
+    Dataipad,
     tab,
     updatePay,
     updatevalueItem,
@@ -32,7 +32,7 @@ export default function Item() {
 
   useEffect(() => {
     if (id !== undefined) {
-      const dataitem: styletypedata[] = Dataflower.filter(
+      const dataitem: styletypedata[] = Dataipad.filter(
         (dataitem: styletypedata) => dataitem.id === parseInt(id)
       );
       setDataproductthis(dataitem);
@@ -48,6 +48,7 @@ export default function Item() {
 
   useEffect(() => {
     if (dataproductthis !== undefined) {
+      console.log(dataproductthis[0].src[0]);
       setValuenumber(dataproductthis[0].quantitybuy);
       setGBSelected(dataproductthis[0].selectedcolor.gb);
       setColorSelected(dataproductthis[0].selectedcolor.color);
@@ -57,9 +58,7 @@ export default function Item() {
 
   useEffect(() => {
     if (dataproductthis !== undefined && selectindex !== undefined) {
-      const result = +valuenumber * dataproductthis[0].price[selectindex[0]];
-      setPaymentAmoun(result);
-      updatePay(result, dataproductthis[0].id);
+      forUpdatePay();
       forfunBool();
       updateselect(selectindex, id);
     }
@@ -74,12 +73,16 @@ export default function Item() {
   }, [colorSelected]);
 
   useEffect(() => {
+    forUpdatePay();
+  }, [valuenumber]);
+
+  function forUpdatePay() {
     if (dataproductthis !== undefined && selectindex !== undefined) {
       const result = +valuenumber * dataproductthis[0].price[selectindex[0]];
       setPaymentAmoun(result);
       updatePay(result, dataproductthis[0].id);
     }
-  }, [valuenumber]);
+  }
 
   function inputchange(e: React.ChangeEvent<HTMLInputElement>, id: number) {
     setforBoolean(false);
@@ -175,14 +178,15 @@ export default function Item() {
           {dataproductthis !== undefined && (
             <div className="w flex flex-col ">
               <div className="flex w boximg-item absolute">
-                {dataproductthis[0].src[0].map((dataitem) => (
-                  <img
-                    src={dataitem}
-                    className="h w"
-                    key={uuidv4()}
-                    alt={dataproductthis[0].name}
-                  />
-                ))}
+                {selectindex &&
+                  dataproductthis[0].src[selectindex[1]].map((dataitem) => (
+                    <img
+                      src={dataitem}
+                      className="h w50"
+                      key={uuidv4()}
+                      alt={dataproductthis[0].name}
+                    />
+                  ))}
               </div>
               <div className=" flex flex-col w box-description absolute ">
                 <div className=" flex flex-col box-itemproduct pb30px w txt-black">

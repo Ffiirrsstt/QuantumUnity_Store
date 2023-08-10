@@ -1,14 +1,14 @@
 import { useData } from "../useContext/useContext";
 import Item from "./Item";
 import { Link } from "react-router-dom";
-import { styletypedata } from "../useContext/Dataflower";
+import { styletypedata } from "../useContext/Dataipad";
 import "./Allproduct.css";
 import img from "../assets/RedRose.jpg";
 import Nav from "./Nav";
 import { v4 as uuidv4 } from "uuid";
 
 export default function Allproduct(): JSX.Element {
-  const { Dataflower, tab } = useData();
+  const { Dataipad, tab } = useData();
 
   return (
     <div className="m-h100 over">
@@ -16,7 +16,7 @@ export default function Allproduct(): JSX.Element {
       <div className="w flex bg-w h90-allproduct absolute">
         <div className="flex w80">
           <div className="w grid grid-template">
-            {Dataflower.map((dataitem: styletypedata) => {
+            {Dataipad.map((dataitem: styletypedata) => {
               return (
                 <Link to={`product/${dataitem.id}`} key={uuidv4()}>
                   <div className=" fil-12 scale-p box-shadow">

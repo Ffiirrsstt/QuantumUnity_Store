@@ -12,7 +12,7 @@ export default function Nav() {
         <div className="w flex1 flex">
           <div className="box-brand">
             <Link to="/" className="none-link">
-              <h1 className="font-l none-link for-brand">Floral Haven</h1>
+              <h1 className="font-l none-link for-brand">QuantumUnity</h1>
             </Link>
           </div>
         </div>
