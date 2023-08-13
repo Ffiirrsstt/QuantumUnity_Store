@@ -29,27 +29,7 @@ export interface styletypedata {
     | [string[], string[]]
     | [string[]];
   name: string;
-  description: [
-    string
-    // [
-    //   [string, string],
-    //   [string, string],
-    //   [string, string],
-    //   [string, string],
-    //   [string, string],
-    //   [string, string],
-    //   [string, string],
-    //   [string, string],
-    //   [string, string],
-    //   [string, string],
-    //   [string, string],
-    //   [string, string],
-    //   [string, string],
-    //   [string, string],
-    //   [string, string]
-    //   [string, string]
-    // ]
-  ];
+  description: [string];
   price: number[];
   quantitysell:
     | [number[], number[]]
@@ -260,7 +240,7 @@ Powerful and user-friendly iPadOS 15 designed for the iPad's versatility and cap
       [b51, b52],
       [pu51, pu52],
     ],
-    name: "iPad Air WiFi Gen 5th",
+    name: "iPad Air Gen 5th (Wi-Fi)",
     description: [
       `<p class='txt-mb'>
       The iPad Air is the ultimate learning tool for education, featuring a 10.9-inch<sup>1</sup> Liquid Retina display that is immersive and true-to-life, the powerful M1 chip, all-day battery life<sup>2</sup>, and Wi-Fi 6. It also supports the Magic Keyboard and Apple Pencil (2nd generation), making it incredibly convenient. It's safe to say that there has never been an easier way to sketch, explore ideas, and learn to code.
@@ -311,7 +291,7 @@ iPadOS 16 elevates the iPad's capabilities for creativity and learning.
       [b51, b52],
       [pu51, pu52],
     ],
-    name: "iPad Air WiFi Gen 5th",
+    name: "iPad Air Gen 5th (Wi-Fi + Cellular)",
     description: [
       `<p class='txt-mb'>
       The iPad Air is a complete learning tool designed specifically for education. With its immersive 10.9-inch<sup>1</sup> Liquid Retina display, powerful M1 chip, all-day battery life<sup>2</sup>, and Wi-Fi 6, it provides an exceptional learning experience. Additionally, it supports the use of the Magic Keyboard and Apple Pencil (2nd generation), making tasks such as note-taking, exploring ideas, and coding easier than ever before.

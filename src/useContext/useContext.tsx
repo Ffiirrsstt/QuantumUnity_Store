@@ -46,6 +46,21 @@ export const Dataprovider: React.FC<DataProviderProps> = ({ children }) => {
     return Array.from({ length: size }, () => false);
   }
 
+  function callcomma(
+    total: number,
+    setnumchange: number,
+    commanumchange: number,
+    txt: string
+  ) {
+    return total >= setnumchange
+      ? txt
+      : total < commanumchange
+      ? total.toLocaleString()
+      : Intl.NumberFormat("en", {
+          notation: "compact",
+        }).format(total);
+  }
+
   const updatePay = (value: number, id: number) => {
     dispatch({ type: "UPDATEPAY", payload: { value, id } });
   };
@@ -73,6 +88,12 @@ export const Dataprovider: React.FC<DataProviderProps> = ({ children }) => {
   const updateselectcolor = (value: boolean[], id: number[]) => {
     dispatch({ type: "UPDATESELECTCOLOR", payload: { value, id } });
   };
+  const updatebtnGb = (id: number[]) => {
+    dispatch({ type: "UPDATEBTNGB", payload: { value: 1, id } });
+  };
+  const updatebtnColor = (id: number[]) => {
+    dispatch({ type: "UPDATEBTNCOLOR", payload: { value: 1, id } });
+  };
 
   return (
     <DataContext.Provider
@@ -89,6 +110,9 @@ export const Dataprovider: React.FC<DataProviderProps> = ({ children }) => {
         creatcArray,
         updateselect,
         updateselectcolor,
+        updatebtnGb,
+        updatebtnColor,
+        callcomma,
       }}
     >
       {children}

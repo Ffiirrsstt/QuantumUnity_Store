@@ -189,7 +189,7 @@ input {
 }
 
 .m-h100 {
-  min-height: 100vh;
+  min-height: 92vh;
 }
 
 .pr20px {
@@ -213,12 +213,16 @@ input {
   max-height: 100vh;
 }
 
-.max-h92vh {
-  /* max-height: 100vh; */
-}
-
 .over {
   overflow: hidden;
+}
+
+.over-x {
+  overflow-x: hidden;
+}
+
+.flex-warp {
+  flex-wrap: wrap;
 }
 
 .flex-col {
@@ -239,6 +243,10 @@ input {
 
 .h10 {
   height: 10vh;
+}
+
+.mt15px {
+  margin-top: 15px;
 }
 
 .font-wl {

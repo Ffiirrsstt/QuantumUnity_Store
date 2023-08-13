@@ -1,5 +1,5 @@
 .box-nav {
-  position: fixed;
+  position: sticky;
   top: 0px;
   height: 8vh;
   z-index: 2;
@@ -18,11 +18,12 @@
 
 .box-totalNav {
   background: var(--txt);
-  padding: 5px;
+  padding: 5px 15px;
   border-radius: 100px;
   width: max-content;
   min-width: 50px;
   color: var(--bg);
+  overflow: hidden;
 }
 
 .ml10px {
@@ -82,5 +83,15 @@
   .box-totalNav {
     max-width: 30px;
     min-width: 30px;
+  }
+}
+@media (max-width: 700px) {
+  .font-brandsmall {
+    font-size: 15px !important;
+  }
+}
+@media (max-width: 550px) {
+  .font-brandsmall {
+    font-size: 13px !important;
   }
 }

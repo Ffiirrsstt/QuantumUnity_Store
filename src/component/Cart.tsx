@@ -1,18 +1,18 @@
 import { styletypedata } from "../useContext/Dataipad";
 import { useData } from "../useContext/useContext";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./Cart.css";
 import Nav from "./Nav";
+import Notresult from "./Notresult";
 import ItemCart from "./ItemCart";
-
-import { FiShoppingBag } from "react-icons/fi";
-import { TfiAnnouncement } from "react-icons/tfi";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
 
 export default function Cart() {
-  const { Dataipad, tab, totalamount, updatetotalpay } = useData();
+  const { Dataipad, tab, totalamount, updatetotalpay, callcomma } = useData();
   const [totalsum, setTotalsum] = useState<number>();
   const [boolean, setBoolean] = useState<boolean>(false);
+  const [eye, setEye] = useState<boolean>(true);
 
   useEffect(() => {
     const total = Dataipad.filter(
@@ -24,62 +24,78 @@ export default function Cart() {
     }, 0);
     setTotalsum(total);
     updatetotalpay(total);
-    Dataipad.length === 0 ? setBoolean(true) : setBoolean(false);
+    Dataipad.filter((dataitem: styletypedata) => dataitem.cart === 1).length ===
+    0
+      ? setBoolean(true)
+      : setBoolean(false);
   }, [Dataipad]);
 
   return (
-    <div className="flex flex-col w two m-h100 ">
+    <div>
       <Nav />
-      <div className="w80 bg-w p10px h90-allproduct">
-        <div className="w flex-forcol-boxcart j-between box-totalcart bg-two">
-          <h3 className="box-allitem flex bg-three font-wl font-m">
-            All items in the shopping cart : {tab()}
-            <div className="font-wb boxfocus bg txt-color flex">
-              {totalamount}
+      <div className="j-start flex flex-col w m-h100 ">
+        <div className="w80 bg-w">
+          {eye && (
+            <div className="flex bg-w w boxframe-w pt20px">
+              <div className="w bg-two flex j-between box-totalcart">
+                <div className="flex7 w flex-forcol-boxcart j-between box-totalcart">
+                  <h3 className="box-allitem flex bg-three font-wl font-m">
+                    All items in the shopping cart : {tab()}
+                    <div className="font-wb boxfocus bg txt-color flex">
+                      {callcomma(
+                        totalamount,
+                        999999999999,
+                        1000000,
+                        "999,999M+"
+                      )}
+                    </div>
+                    {tab()}
+                    <span className="font-wl font-m">pieces.</span>
+                  </h3>
+                  <h3 className="ml50px box-allitem bg-three flex font-wl font-m">
+                    Total payment amount: {tab()}
+                    <span className="font-wb font-xl">
+                      {callcomma(
+                        totalsum,
+                        1000000000000000000000,
+                        1000000000000000,
+                        "1,000,000,000, 000,000M+"
+                      )}
+                    </span>
+                    {tab()}
+                    baht.
+                  </h3>
+                </div>
+
+                <h2 className="font-xl flex1 flex">
+                  <AiOutlineEyeInvisible
+                    onClick={() => setEye(!eye)}
+                    className="icon-nav"
+                  />
+                </h2>
+              </div>
             </div>
-            {tab()}
-            <span className="font-wl font-m">pieces.</span>
-          </h3>
-          <h3 className="ml50px box-allitem bg-three flex font-wl font-m">
-            Total payment amount: {tab()}
-            <span className="font-wb font-xl">{totalsum}</span>
-            {tab()}
-            baht.
-          </h3>
+          )}
+          {boolean && eye && <Notresult data={1} eye={true} />}
+          {boolean && !eye && <Notresult data={1} eye={false} />}
+          {!boolean && Dataipad && totalsum && (
+            <div className={`${!eye && "pt20px"}`}>
+              {Dataipad.map((dataitem: styletypedata) => {
+                if (dataitem.cart === 1) {
+                  return <ItemCart key={dataitem.id} {...dataitem} />;
+                }
+              })}
+            </div>
+          )}
+          {!eye && (
+            <div className="eye-hide">
+              <AiOutlineEye
+                onClick={() => setEye(!eye)}
+                className="icon-nav icon-hideeye icon-colorbtn"
+              />
+            </div>
+          )}
         </div>
-        {boolean && (
-          <div className="w flex box-noneitem">
-            <div className="flex-col flex box-none">
-              <h1 className="font-xl w h flex1 head-none bg txt-color flex bor-top">
-                No items found in the shopping cart.{tab()}
-                <TfiAnnouncement
-                  className="txt-colorred font-wb icon-announcement"
-                  title="No items found in the shopping cart."
-                />
-              </h1>
-              <h2 className="flex3 font-xl font-wl h w bg-two txt-color flex bor-bottom ">
-                To add items to your shopping cart :{tab()}
-                <Link to="/">
-                  <FiShoppingBag className="icon-nav " />
-                </Link>
-              </h2>
-            </div>
-          </div>
-        )}
-        {!boolean &&
-          Dataipad &&
-          // totalsum &&
-          Dataipad.map((dataitem: styletypedata) => {
-            if (dataitem.cart === 1) {
-              return <ItemCart key={dataitem.id} {...dataitem} />;
-            }
-          })}
-        {/* {!boolean &&
-          data &&
-          totalsum &&
-          data.map((dataitem: styletypedata) => {
-            return <ItemCart key={dataitem.id} {...dataitem} />;
-          })} */}
       </div>
     </div>
   );

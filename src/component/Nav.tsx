@@ -5,14 +5,16 @@ import { AiOutlineShoppingCart, AiOutlineContacts } from "react-icons/ai";
 import { FiShoppingBag } from "react-icons/fi";
 
 export default function Nav() {
-  const { totalamount, tab } = useData();
+  const { totalamount, tab, callcomma } = useData();
   return (
     <>
       <div className="flex box-nav w bg-two">
         <div className="w flex1 flex">
           <div className="box-brand">
             <Link to="/" className="none-link">
-              <h1 className="font-l none-link for-brand">QuantumUnity</h1>
+              <h1 className="font-l none-link for-brand font-brandsmall">
+                QuantumUnity
+              </h1>
             </Link>
           </div>
         </div>
@@ -30,7 +32,9 @@ export default function Nav() {
               <h2 className="font-xl txt-color">Cart :{tab()}</h2>
               <AiOutlineShoppingCart className="icon-nav" />
               <div className="box-totalNav h flex cursor ml10px">
-                <h3 className="font-m">{totalamount}</h3>
+                <h3 className="font-m">
+                  {callcomma(totalamount, 100000, 999, "99+")}
+                </h3>
               </div>
             </div>
           </Link>

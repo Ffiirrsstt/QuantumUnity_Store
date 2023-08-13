@@ -1,7 +1,29 @@
 .box-contactmain {
-  height: 300px;
-  min-height: max-content;
-  width: 50vw;
+  height: 450px !important;
+  min-height: max-content !important;
+}
+
+.boxcontact-value {
+  background: linear-gradient(to left, var(--txt), var(--bg-two));
+  background: linear-gradient(to right, var(--txt), var(--bg));
+  color: var(--bg-btn);
+  width: 500px;
+  height: 50%;
+  padding-right: 30px;
+  border-radius: 5px;
+  border: 0px;
+}
+
+.icon-contact {
+  color: var(--bg);
+  font-size: 40px;
+}
+
+.contact-facebook {
+  color: #3b5998;
+}
+.contact-line {
+  color: #5cb85c;
 }
 
 .a-start {
@@ -14,4 +36,16 @@
 
 .mb10px {
   margin-bottom: 10px;
+}
+
+.box-contactmain {
+  height: 300px;
+  min-height: max-content;
+  width: 50vw;
+}
+
+@media (max-width: 1070px) {
+  .box-contactmain {
+    height: 300px;
+  }
 }
