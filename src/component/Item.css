@@ -49,6 +49,9 @@
   padding-left: 10px;
 }
 
+.font-ex-xl {
+  font-size: clamp(13px, 2vw, 23px);
+}
 .font-xl {
   font-size: clamp(12px, 2vw, 25px);
 }
